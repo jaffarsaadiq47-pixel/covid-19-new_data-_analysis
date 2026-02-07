@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>COVID-19 Dashboard</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-4">
+
+    <!-- HEADER -->
+    <div class="text-center mb-4">
+        <h1 class="fw-bold">🦠 COVID-19 Data Analysis Dashboard</h1>
+        <p class="text-muted">Python • Flask • Pandas • Bootstrap</p>
+    </div>
+
+    <!-- TABLE CARD -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <h4 class="card-title mb-3">Top Affected Countries</h4>
+
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Country</th>
+                        <th>Confirmed</th>
+                        <th>Deaths</th>
+                        <th>Recovered</th>
+                        <th>Death Rate (%)</th>
+                        <th>Recovery Rate (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in tables %}
+                    <tr>
+                        <td>{{ row.Country }}</td>
+                        <td>{{ row.Confirmed }}</td>
+                        <td>{{ row.Deaths }}</td>
+                        <td>{{ row.Recovered }}</td>
+                        <td>{{ "%.2f"|format(row.Death_Rate) }}</td>
+                        <td>{{ "%.2f"|format(row.Recovery_Rate) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- GRAPHS -->
+    <div class="row">
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <h5>Confirmed Cases</h5>
+                    <img src="/static/confirmed.png" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <h5>Death Rate (%)</h5>
+                    <img src="/static/death_rate.png" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <h5>Recovery Rate (%)</h5>
+                    <img src="/static/recovery_rate.png" class="img-fluid">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="text-center text-muted mt-4 mb-3">
+        © 2026 COVID-19 Data Analysis Project
+    </div>
+
+</div>
+
+</body>
+</html>
